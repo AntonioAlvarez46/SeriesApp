@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol ShowsRepository: Sendable {
+    func searchShows(query: String) async throws -> [Show]
+    func getShowDetail(id: Int) async throws -> Show
+}
