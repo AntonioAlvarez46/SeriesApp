@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol HTTPClient: Sendable {
+    func get(_ url: URL) async throws -> Data
+}
