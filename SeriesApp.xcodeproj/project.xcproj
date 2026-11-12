@@ -14,6 +14,7 @@
     { "path": ".gitignore", "target-membership": [ "SeriesApp/resources" ] },
     { "kind": "folder", "path": "SeriesApp", "target-membership": [ "SeriesApp" ] },
     { "kind": "folder", "path": "SeriesAppTests", "target-membership": [ "SeriesAppTests" ] },
+    { "path": "README.md", "target-membership": [ "SeriesApp/resources" ] },
     {
       "kind": "group",
       "name": "Products",
