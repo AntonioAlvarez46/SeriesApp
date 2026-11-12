@@ -17,7 +17,7 @@
 "search.idle.description" = "Type the name of a show to get started";
 "search.empty.title" = "No results";
 "search.empty.description" = "no shows found for '%@'. Try a different search";
-"search.error.message" = "Couldn´t load shows. Please try again";
+"search.error.message" = "Couldn't load shows. Please try again";
 
 /* Detail */
 "detail.rating" = "Rating";
@@ -28,4 +28,4 @@
 "detail.language" = "Language";
 "detail.synopsis" = "Synopsis";
 "detail.officialSite" = "Official website";
-"detail.error.message" = "Couldn´t update the details";
+"detail.error.message" = "Couldn't update the details";

@@ -83,7 +83,7 @@ final class DefaultShowsRepositoryTests: XCTestCase {
         XCTAssertEqual(httpClient.callCount, 1)
     }
     
-    func test_search_errorsAreNotCache() async throws {
+    func test_search_errorsAreNotCached() async throws {
         // Arrange
         httpClient.result = .failure(NetworkError.statusCode(500))
         _ = try? await sut.searchShows(query: "bad")
@@ -130,7 +130,7 @@ final class DefaultShowsRepositoryTests: XCTestCase {
                             "language": "English",
                             "summary": "<p>A <b>teacher</b> turns to crime.</p>",
                             "image": { "medium": "https://example.com/m.jpg", "original": "https://example.com/o.jpg" },
-                            "officialSite": null,
+                            "officialSite": null
                         }
             }
         ]
