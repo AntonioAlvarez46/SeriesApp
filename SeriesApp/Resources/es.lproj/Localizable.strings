@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  SeriesApp
+
+  Created by Antonio Alvarez on 12/11/2026.
+  
+*/
+/* Common */
+"common.error.title" = "Algo salió mal";
+"common.retry" = "Reintentar";
+
+/* Search */
+"search.title" = "Series";
+"search.prompt" = "Buscar series";
+"search.loading" = "Buscando...";
+"search.idle.title" = "Busca una serie";
+"search.idle.description" = "Escribe el nombre de una serie";
+"search.empty.title" = "Sin resultados";
+"search.empty.description" = "No se han encontrado series para '%@'. Prueba con otra búsqueda";
+"search.error.message" = "No se pudieron cargar las series. Inténtalo de nuevo";
+
+/* Detail */
+"detail.rating" = "Valoración";
+"detail.genres" = "Géneros";
+"detail.status" = "Estado";
+"detail.premiered" = "Estreno";
+"detail.network" = "Cadena";
+"detail.language" = "Idioma";
+"detail.synopsis" = "Sinopsis";
+"detail.officialSite" = "Web Oficial";
+"detail.error.message" = "No se pudo actualizar el detalle";
