@@ -1,6 +1,6 @@
 import SwiftUI
 
-@main struct MyApp: App {
+@main struct SeriesAppApp: App {
     private let container = AppContainer()
     
     var body: some Scene {
