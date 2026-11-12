@@ -31,34 +31,34 @@ struct ShowDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     if let rating = show.rating {
-                        LabeledContent("Valoración", value: "\(rating.formatted(.number.precision(.fractionLength(1))))")
+                        LabeledContent(L10n.Detail.rating, value: "\(rating.formatted(.number.precision(.fractionLength(1))))")
                     }
                     if !show.genres.isEmpty {
-                        LabeledContent("Géneros", value: show.genres.joined(separator: ", "))
+                        LabeledContent(L10n.Detail.genres, value: show.genres.joined(separator: ", "))
                     }
                     if let status = show.status {
-                        LabeledContent("Estado", value: status)
+                        LabeledContent(L10n.Detail.status, value: status)
                     }
                     if let premiered = show.premiered {
-                        LabeledContent("Estreno", value: premiered)
+                        LabeledContent(L10n.Detail.premiered, value: premiered)
                     }
                     if let network = show.network {
-                        LabeledContent("Cadena", value: network)
+                        LabeledContent(L10n.Detail.network, value: network)
                     }
                     if let language = show.language {
-                        LabeledContent("Idioma", value: language)
+                        LabeledContent(L10n.Detail.language, value: language)
                     }
                 }
                 
                 if let summary = show.summary, !summary.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Sinopsis").font(.headline)
+                        Text(L10n.Detail.synopsis).font(.headline)
                         Text(summary).foregroundStyle(.secondary)
                     }
                 }
                 
                 if let site = show.officialSite {
-                    Link("Web Oficial", destination: site)
+                    Link(L10n.Detail.officialSite, destination: site)
                 }
                 
                 if let error = viewModel.errorMessage {

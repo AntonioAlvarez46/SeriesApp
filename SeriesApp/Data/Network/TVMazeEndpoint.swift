@@ -11,17 +11,15 @@ enum TVMazeEndpoint {
     case search(query: String)
     case showDetail(id: Int)
     
-    private static let baseURL = "https://api.tvmaze.com"
-    
     var url: URL? {
-        var components = URLComponents(string: Self.baseURL)
+        var components = URLComponents(string: APIConstants.TVMaze.baseURL)
         
         switch self {
         case .search(let query):
-            components?.path = "/search/shows"
-            components?.queryItems = [URLQueryItem(name: "q", value: query)]
+            components?.path = APIConstants.TVMaze.Path.searchShows
+            components?.queryItems = [URLQueryItem(name: APIConstants.TVMaze.QueryParameter.query, value: query)]
         case .showDetail(let id):
-            components?.path = "/shows/\(id)"
+            components?.path = APIConstants.TVMaze.Path.showDetail(id: id)
         }
         
         return components?.url

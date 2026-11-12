@@ -8,14 +8,18 @@
 import Foundation
 
 struct DefaultShowsRepository: ShowsRepository {
+    
+    // MARK: - Properties
     private let httpClient: HTTPClient
     private let cache: SearchCache
     
+    // MARK: - Init
     init(httpClient: HTTPClient, cache: SearchCache) {
         self.httpClient = httpClient
         self.cache = cache
     }
     
+    // MARK: - ShowsRepository
     func searchShows(query: String) async throws -> [Show] {
         if let cached = await cache.shows(for: query) {
             return cached
@@ -43,6 +47,7 @@ struct DefaultShowsRepository: ShowsRepository {
         return try decode(ShowDTO.self, from: data).toDomain()
     }
     
+    // MARK: - Private
     private func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
         do {
             return try JSONDecoder().decode(type, from: data)

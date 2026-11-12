@@ -13,11 +13,11 @@ struct ErrorStateView: View {
     
     var body: some View {
         ContentUnavailableView {
-            Label("Algo salió mal", systemImage: "exclamationmark.triangle")
+            Label(L10n.Common.errorTitle, systemImage: "exclamationmark.triangle")
         } description: {
             Text(message)
         } actions: {
-            Button("Reintentar", action: onRetry)
+            Button(L10n.Common.retry, action: onRetry)
                 .buttonStyle(.borderedProminent)
         }
     }

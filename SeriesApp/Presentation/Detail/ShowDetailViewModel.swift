@@ -11,16 +11,20 @@ import Observation
 @MainActor
 @Observable
 final class ShowDetailViewModel {
+    
+    // MARK: - Properties
     private(set) var show: Show
     private(set) var isLoading = false
     private(set) var errorMessage: String?
     private let getShowDetailUseCase: GetShowDetailUseCase
     
+    // MARK: - Init
     init(show: Show, getShowDetailUseCase: GetShowDetailUseCase) {
         self.show = show
         self.getShowDetailUseCase = getShowDetailUseCase
     }
     
+    // MARK: - Public API
     func load() async {
         isLoading = true
         defer { isLoading = false }
@@ -31,7 +35,7 @@ final class ShowDetailViewModel {
         } catch is CancellationError {
             // User left the screen
         } catch {
-            errorMessage = "No se pudo actualizar el detalle"
+            errorMessage = L10n.Detail.errorMessage
         }
     }
     

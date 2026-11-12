@@ -12,6 +12,7 @@ import Observation
 @Observable
 final class SearchViewModel {
     
+    // MARK: - State
     enum State: Equatable {
         case idle
         case loading
@@ -20,17 +21,20 @@ final class SearchViewModel {
         case error(String)
     }
     
+    // MARK: - Properties
     var query = ""
     private(set) var state: State = .idle
     private(set) var searchTask: Task<Void, Never>?
     private let searchShowsUseCase: SearchShowsUseCase
     private let debounce: Duration
     
+    // MARK: - Init
     init(searchShowsUseCase: SearchShowsUseCase, debounce: Duration = .milliseconds(400)) {
         self.searchShowsUseCase = searchShowsUseCase
         self.debounce = debounce
     }
     
+    // MARK: - Public API
     func onQueryChanged(_ newQuery: String) {
         searchTask?.cancel()
         guard !newQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
@@ -47,6 +51,7 @@ final class SearchViewModel {
         onQueryChanged(query)
     }
     
+    // MARK: - Private
     private func performSearch(query: String) async {
         do {
             try await Task.sleep(for: debounce)
@@ -62,7 +67,7 @@ final class SearchViewModel {
             state = shows.isEmpty ? .empty : .loaded(shows)
         } catch {
             guard !Task.isCancelled, !Self.isCancellation(error) else { return }
-            state = .error("No se pudieron cargar las series. Inténtalo de nuevo")
+            state = .error(L10n.Search.errorMessage)
         }
     }
     

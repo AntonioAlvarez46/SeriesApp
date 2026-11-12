@@ -19,8 +19,8 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             content
-                .navigationTitle("Series")
-                .searchable(text: $viewModel.query, prompt: "Buscar series")
+                .navigationTitle(L10n.Search.title)
+                .searchable(text: $viewModel.query, prompt: L10n.Search.prompt)
                 .onChange(of: viewModel.query) { _, newValue in
                     viewModel.onQueryChanged(newValue)
                 }
@@ -30,17 +30,18 @@ struct SearchView: View {
         }
     }
     
+    // MARK: - Content
     @ViewBuilder
     private var content: some View {
         switch viewModel.state {
         case .idle:
             ContentUnavailableView(
-                "Buscar una serie",
+                L10n.Search.idleTitle,
                 systemImage: "magnifyingglass",
-                description: Text("Escribe el nombre de una serie")
+                description: Text(L10n.Search.idleDescription)
             )
         case .loading:
-            ProgressView("Buscando...")
+            ProgressView(L10n.Search.loading)
         case .loaded(let shows):
             List(shows) { show in
                 NavigationLink(value: show) {
@@ -49,7 +50,11 @@ struct SearchView: View {
             }
             .listStyle(.plain)
         case .empty:
-            ContentUnavailableView.search(text: viewModel.query)
+            ContentUnavailableView(
+                L10n.Search.emptyTitle,
+                systemImage: "magnifyingglass",
+                description: Text(L10n.Search.emptyDescription(viewModel.query))
+            )
         case .error(let message):
             ErrorStateView(message: message, onRetry: viewModel.retry)
         }
